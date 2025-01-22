@@ -9,15 +9,13 @@ function Navbar() {
     const { categoryId } = useParams();
     const [auth, setAuth] = useState(false);
     useEffect(() => {
-
-        fetch('http://localhost/laravel/shoping_cart/public/api/category')
+        fetch('http://localhost/php_Learning/laravel/shoping_cart/public/api/category')
             .then((response) => response.json())
-            .then((data) => setCategories(data.categories))
+            .then((data) => {
+                console.log('Fetched categories:', data);
+                setCategories(data.categories);
+            })
             .catch((error) => console.error('Error fetching categories:', error));
-        const token = localStorage.getItem("token");
-        if (token) {
-            setAuth(true);
-        }
     }, []);
     return (
         <div className="container-fluid mb-5">

@@ -10,7 +10,7 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProductDetails = async () => {
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8000/api/product/${id}`;
+            const url = `https://anuj.freelogomaker.in/api/product/${id}`;
 
             try {
                 const response = await fetch(url, {

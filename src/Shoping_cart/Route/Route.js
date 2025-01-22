@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route,useParams } from 'react-router-dom'; 
+import {Routes, Route,useParams } from 'react-router-dom'; 
 import Home from '../Index'; 
 import Cart from '../Product/AddToCart'; 
 import Shop from '../Shop'; 

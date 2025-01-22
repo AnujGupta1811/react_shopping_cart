@@ -7,15 +7,21 @@ function Navbar() {
   const [auth, setAuth] = useState(false); // Manage authentication status
 
   useEffect(() => {
-    fetch('http://localhost/laravel/shoping_cart/public/api/category')
-      .then((response) => response.json())
-      .then((data) => setCategories(data.categories))
-      .catch((error) => console.error('Error fetching categories:', error));
-      const token = localStorage.getItem("token");
-      if (token) {
-        setAuth(true); // If token exists, set isAuthenticated to true
-      }  }, []);
-      
+  fetch('https://anuj.freelogomaker.in/api/category')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Fetched categories:', data.categories);  // Log to inspect the response
+      setCategories(data.categories);
+    })
+    .catch((error) => console.error('Error fetching categories:', error));
+
+  const token = localStorage.getItem("token");
+  if (token) {
+    setAuth(true); // If token exists, set isAuthenticated to true
+  }
+}, []);
+
+
   return (
     <div className="container-fluid mb-5">
       <div className="row border-top px-xl-5">
@@ -34,11 +40,16 @@ function Navbar() {
             id="navbar-vertical"
           >
             <div className="navbar-nav w-100 overflow-hidden" style={{ height: '410px' }}>
-              {categories.map((category) => (
-                <Link  key={category.id}  to={`/shop?category=${category.id}`}  className="nav-item nav-link">
-                  {category.category_name}
-                </Link>
-              ))}
+              {categories.length === 0 ? (
+                <p>No categories available.</p>
+              ) : (
+                categories.map((category) => (
+                  <Link key={category.id} to={`/shop?category=${category.id}`} className="nav-item nav-link">
+                    {category.category_name}
+                  </Link>
+                ))
+              )}
+
             </div>
           </nav>
         </div>
@@ -67,9 +78,9 @@ function Navbar() {
               </div>
               <div className="navbar-nav ml-auto py-0">
                 {auth ? (<Link to="/logout" className="nav-item nav-link">Logout</Link>) :
-                 (<>  <Link to="/login" className="nav-item nav-link">Login</Link>  
-                 <Link to="/register" className="nav-item nav-link">Register</Link></>
-                )}
+                  (<>  <Link to="/login" className="nav-item nav-link">Login</Link>
+                    <Link to="/register" className="nav-item nav-link">Register</Link></>
+                  )}
               </div>
             </div>
           </nav>

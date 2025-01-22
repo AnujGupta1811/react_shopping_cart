@@ -11,7 +11,7 @@ function ProductItem({ product }) {
             console.error('Product ID is missing:', {id});
             return;
         }
-        console.log({ email,id});
+        console.log({id});
 
         const addToCart = async () => {
                 console.log('Adding to cart...');
@@ -27,7 +27,7 @@ function ProductItem({ product }) {
                     return;
                 }
                     const response = await axios.post(
-                    `http://localhost:8000/api/cart/${id}`,
+                    `https://anuj.freelogomaker.in/api/cart/${id}`,
                     { email, quantity: 1 },
                     {
                         headers: {
@@ -53,7 +53,7 @@ function ProductItem({ product }) {
                 }          
         };
         addToCart();
-    }, [id]); 
+    }, [id,email]); 
 
     return (
         <div className="product-item">

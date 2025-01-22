@@ -16,11 +16,11 @@ const Login = () => {
 
     const loginData = { email,verificationCode };
     console.log(verificationCode,email)
-    axios.post('http://localhost:8000/api/verify-email', loginData, { withCredentials: true })
+    axios.post('https://anuj.freelogomaker.in/api/verify-email', loginData, { withCredentials: true })
     .then((res) => {
         if (res.data.success) {
             setVerify(true);
-            localStorage.setItem("token", "access");
+            localStorage.getIem("token", res.data.token);
         } else {
           Swal.fire({
             title: "Verification Failed",

@@ -7,8 +7,8 @@ function ProductList() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const url = categoryId 
-            ? `http://localhost:8000/api/products/${categoryId}`
-            : 'http://localhost:8000/api/products';
+            ? `https://anuj.freelogomaker.in/api/products/${categoryId}`
+            : 'https://anuj.freelogomaker.in/api/products';
 
          
 

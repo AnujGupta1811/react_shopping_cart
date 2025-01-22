@@ -21,7 +21,7 @@ class Register extends React.Component {
     fd.append("cpassword", this.state.password);
 
     axios
-      .post("http://localhost:8000/api/register", fd)
+      .post("https://anuj.freelogomaker.in/api/register", fd)
       .then((res) => {
         Swal.fire({
           title: "Success",

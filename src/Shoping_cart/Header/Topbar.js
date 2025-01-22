@@ -62,10 +62,11 @@ function TopBar() {
             <i className="fas fa-heart text-primary"></i>
             <span className="badge">{wishlistCount}</span>
           </a>
-          <a href="" className="btn border">
+          <a href="#" className="btn border">
             <i className="fas fa-shopping-cart text-primary"></i>
             <span className="badge">{cartCount}</span>
           </a>
+
         </div>
       </div>
     </div>
